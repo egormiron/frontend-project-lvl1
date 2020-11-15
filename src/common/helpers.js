@@ -12,10 +12,6 @@ export function showMessage(message) {
   console.log(message);
 }
 
-export function showRoundResultMessage(isCorrect, userAnswer, correctAnswer) {
-  showMessage(isCorrect ? 'Correct!' : `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-}
-
 export function logError(error, customMessage) {
   console.error(`\n${customMessage}`);
 }

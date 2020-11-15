@@ -3,7 +3,7 @@ import { showMessage, ask, logError } from './common/helpers.js';
 import { evenGame, evenGameRules } from './games/even-game.js';
 import { calcGame, calcGameRules } from './games/calc-game.js';
 
-function gameWrapper(gameFn, gameRules, maxRoundsAmount = 3) {
+function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
   return async () => {
     try {
       showMessage('Welcome to the Brain Games!');
@@ -13,12 +13,18 @@ function gameWrapper(gameFn, gameRules, maxRoundsAmount = 3) {
 
       let roundsFinished = 0;
       while (roundsFinished < maxRoundsAmount) {
-        const { isAnswerCorrect } = await gameFn();
+        const { question, answer, validate } = await gameFn();
+
+        showMessage(`Question: ${question}`);
+        const userAnswer = await ask('Your answer: ');
+        const isAnswerCorrect = validate(userAnswer);
 
         if (!isAnswerCorrect) {
+          showMessage(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`);
           break;
         }
 
+        showMessage('Correct!');
         roundsFinished += 1;
       }
 

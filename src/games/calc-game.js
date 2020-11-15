@@ -1,6 +1,4 @@
-import {
-  ask, getRandomNumber, showMessage, showRoundResultMessage,
-} from '../common/helpers.js';
+import { getRandomNumber } from '../common/helpers.js';
 
 function getRandomMathOperator() {
   const operators = [
@@ -22,19 +20,17 @@ function getRandomMathOperator() {
   return operators[randomKey];
 }
 
-export const calcGameRules = 'What is the result of the expression?';
-
 export async function calcGame() {
   const randomNumberA = getRandomNumber();
   const randomNumberB = getRandomNumber();
   const operator = getRandomMathOperator();
+  const answer = operator.method(randomNumberA, randomNumberB);
 
-  showMessage(`Question: ${randomNumberA} ${operator.sign} ${randomNumberB}`);
-  const userAnswer = await ask('Your answer: ');
-  const correctAnswer = operator.method(randomNumberA, randomNumberB);
-
-  const isAnswerCorrect = correctAnswer === Number(userAnswer);
-  showRoundResultMessage(isAnswerCorrect, userAnswer, correctAnswer);
-
-  return { isAnswerCorrect };
+  return {
+    question: `${randomNumberA} ${operator.sign} ${randomNumberB}`,
+    validate: (userAnswer) => answer === Number(userAnswer),
+    answer,
+  };
 }
+
+export const calcGameRules = 'What is the result of the expression?';
