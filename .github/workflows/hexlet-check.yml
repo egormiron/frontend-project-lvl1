@@ -13,10 +13,10 @@ jobs:
       - name: Eslint check
         run: make lint
 
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - name: Hexlet project check
-#        uses: hexlet/project-action@release
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
