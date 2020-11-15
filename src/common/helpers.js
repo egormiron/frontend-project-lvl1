@@ -1,7 +1,7 @@
 import promptly from 'promptly';
 
 export function getRandomNumber(min = 0, max = 100) {
-  return min + Math.round((max - min) * Math.random());
+  return min + Math.floor((max - min) * Math.random());
 }
 
 export async function ask(message) {
