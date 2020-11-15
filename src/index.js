@@ -2,6 +2,7 @@ import { showMessage, ask, logError } from './common/helpers.js';
 
 import { evenGame, evenGameRules } from './games/even-game.js';
 import { calcGame, calcGameRules } from './games/calc-game.js';
+import { gcdGame, gcdGameRules } from './games/gcd-game.js';
 
 function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
   return async () => {
@@ -37,3 +38,4 @@ function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
 
 export const startEvenGame = gameWrapper(evenGame, evenGameRules);
 export const startCalcGame = gameWrapper(calcGame, calcGameRules);
+export const startGcdGame = gameWrapper(gcdGame, gcdGameRules);
