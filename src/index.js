@@ -4,6 +4,7 @@ import { evenGame, evenGameRules } from './games/even-game.js';
 import { calcGame, calcGameRules } from './games/calc-game.js';
 import { gcdGame, gcdGameRules } from './games/gcd-game.js';
 import { progressionGame, progressionGameRules } from './games/progression-game.js';
+import { primeGame, primeGameRules } from './games/prime-game.js';
 
 function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
   return async () => {
@@ -41,3 +42,4 @@ export const startEvenGame = gameWrapper(evenGame, evenGameRules);
 export const startCalcGame = gameWrapper(calcGame, calcGameRules);
 export const startGcdGame = gameWrapper(gcdGame, gcdGameRules);
 export const startProgressionGame = gameWrapper(progressionGame, progressionGameRules);
+export const startPrimeGame = gameWrapper(primeGame, primeGameRules);
