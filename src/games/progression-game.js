@@ -1,8 +1,9 @@
 import { getRandomNumber } from '../common/helpers.js';
 
+const minBorder = 5;
+const maxBorder = 11;
+
 function getProgression() {
-  const minBorder = 5;
-  const maxBorder = 11;
   const progressionLength = getRandomNumber(minBorder, maxBorder);
   const step = getRandomNumber();
   const progression = [getRandomNumber()];
@@ -14,7 +15,7 @@ function getProgression() {
   return progression;
 }
 
-export function progressionGame() {
+export function getProgressionGameData() {
   const progression = getProgression();
   const key = getRandomNumber(0, progression.length);
   const answer = progression[key];

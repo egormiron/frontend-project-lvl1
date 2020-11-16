@@ -10,7 +10,7 @@ function isPrime(num) {
   return num > 1;
 }
 
-export function primeGame() {
+export function getPrimeGameData() {
   const randomNumber = getRandomNumber();
   const answer = isPrime(randomNumber) ? 'yes' : 'no';
 

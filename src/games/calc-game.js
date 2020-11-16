@@ -1,26 +1,27 @@
 import { getRandomNumber } from '../common/helpers.js';
 
+const operators = [
+  {
+    sign: '+',
+    method: (a, b) => a + b,
+  },
+  {
+    sign: '-',
+    method: (a, b) => a - b,
+  },
+  {
+    sign: '*',
+    method: (a, b) => a * b,
+  },
+];
+
 function getRandomMathOperator() {
-  const operators = [
-    {
-      sign: '+',
-      method: (a, b) => a + b,
-    },
-    {
-      sign: '-',
-      method: (a, b) => a - b,
-    },
-    {
-      sign: '*',
-      method: (a, b) => a * b,
-    },
-  ];
   const randomKey = getRandomNumber(0, operators.length);
 
   return operators[randomKey];
 }
 
-export async function calcGame() {
+export async function getCalcGameData() {
   const randomNumberA = getRandomNumber();
   const randomNumberB = getRandomNumber();
   const operator = getRandomMathOperator();

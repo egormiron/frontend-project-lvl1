@@ -1,6 +1,6 @@
 import { getRandomNumber } from '../common/helpers.js';
 
-export function evenGame() {
+export function getEvenGameData() {
   const randomNumber = getRandomNumber();
   const answer = randomNumber % 2 === 0 ? 'yes' : 'no';
 

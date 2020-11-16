@@ -8,7 +8,7 @@ function gcd(a, b) {
   return gcd(b, a % b);
 }
 
-export async function gcdGame() {
+export async function getGcdGameData() {
   const randomNumberA = getRandomNumber();
   const randomNumberB = getRandomNumber();
   const answer = gcd(randomNumberA, randomNumberB);

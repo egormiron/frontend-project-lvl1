@@ -1,12 +1,12 @@
 import { showMessage, ask, logError } from './common/helpers.js';
 
-import { evenGame, evenGameRules } from './games/even-game.js';
-import { calcGame, calcGameRules } from './games/calc-game.js';
-import { gcdGame, gcdGameRules } from './games/gcd-game.js';
-import { progressionGame, progressionGameRules } from './games/progression-game.js';
-import { primeGame, primeGameRules } from './games/prime-game.js';
+import { getEvenGameData, evenGameRules } from './games/even-game.js';
+import { getCalcGameData, calcGameRules } from './games/calc-game.js';
+import { getGcdGameData, gcdGameRules } from './games/gcd-game.js';
+import { getProgressionGameData, progressionGameRules } from './games/progression-game.js';
+import { getPrimeGameData, primeGameRules } from './games/prime-game.js';
 
-function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
+function runGame(getGameData, gameRules = '', maxRoundsAmount = 3) {
   return async () => {
     try {
       showMessage('Welcome to the Brain Games!');
@@ -16,7 +16,7 @@ function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
 
       let roundsFinished = 0;
       while (roundsFinished < maxRoundsAmount) {
-        const { question, answer, validate } = await gameFn();
+        const { question, answer, validate } = await getGameData();
 
         showMessage(`Question: ${question}`);
         const userAnswer = await ask('Your answer: ');
@@ -38,8 +38,8 @@ function gameWrapper(gameFn, gameRules = '', maxRoundsAmount = 3) {
   };
 }
 
-export const startEvenGame = gameWrapper(evenGame, evenGameRules);
-export const startCalcGame = gameWrapper(calcGame, calcGameRules);
-export const startGcdGame = gameWrapper(gcdGame, gcdGameRules);
-export const startProgressionGame = gameWrapper(progressionGame, progressionGameRules);
-export const startPrimeGame = gameWrapper(primeGame, primeGameRules);
+export const startEvenGame = runGame(getEvenGameData, evenGameRules);
+export const startCalcGame = runGame(getCalcGameData, calcGameRules);
+export const startGcdGame = runGame(getGcdGameData, gcdGameRules);
+export const startProgressionGame = runGame(getProgressionGameData, progressionGameRules);
+export const startPrimeGame = runGame(getPrimeGameData, primeGameRules);
