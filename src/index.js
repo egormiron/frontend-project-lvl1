@@ -23,7 +23,8 @@ export default function runGame(getGameData, gameRules, maxRoundsAmount = 3) {
       const userAnswer = ask('Your answer: ');
 
       if (!(answer === userAnswer)) {
-        showMessage(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'\nLet's try again, ${name}!`);
+        showMessage(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`);
+        showMessage(`Let's try again, ${name}!`);
         return;
       }
 
